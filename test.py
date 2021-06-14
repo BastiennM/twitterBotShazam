@@ -1,7 +1,7 @@
 from ShazamAPI import Shazam
 import json
 
-mp3_file_content_to_recognize = open('daddy.mp3', 'rb').read()
+mp3_file_content_to_recognize = open('test.mp3', 'rb').read()
 
 shazam = Shazam(mp3_file_content_to_recognize)
 recognize_generator = shazam.recognizeSong()
@@ -19,7 +19,6 @@ print(listrecognize[0][1]["track"]["hub"]["providers"][0]["actions"][0]['uri']) 
 print(listrecognize[0][1]["track"]["hub"]["providers"][1]["actions"][0]['uri']) #GET deezer search (ex : https://www.deezer.com/search/daddy%20sdm)
 print(listrecognize[0][1]["track"]["sections"][0]["metadata"][0]["text"]) #GET album name
 print(listrecognize[0][1]["track"]["sections"][0]["metadata"][1]["text"]) #GET album maison de disque name
-print(listrecognize[0][1]["track"]["sections"][0]["metadata"][2]["text"]) #GET album years
 print(listrecognize[0][1]["track"]["sections"][0]["metadata"][2]["text"]) #GET album years
 print("--------------------")
  
