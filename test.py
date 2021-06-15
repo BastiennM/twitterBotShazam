@@ -3,7 +3,7 @@ import json
 import requests
 
 
-mp3_file_content_to_recognize = open('test.mp3', 'rb').read()
+mp3_file_content_to_recognize = open('daddy.mp3', 'rb').read()
 
 shazam = Shazam(mp3_file_content_to_recognize)
 recognize_generator = shazam.recognizeSong()
