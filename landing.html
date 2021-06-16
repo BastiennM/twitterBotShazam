@@ -10,6 +10,15 @@
     <title>Shazam bot</title>
   </head>
   <body>
+    <script>
+      fetch("data.json")
+        .then(response=>response.json())
+        .then(data => {
+          document.querySelector("#titlesong").innerText = data.titlepart
+          document.querySelector("#subtitlesong").innerText = data.subtitle
+          document.querySelector("#cover").src = data.cover
+        })
+    </script>
     <style>
       *{
         font-family:'Cabin',Arial,sans-serif;
@@ -20,8 +29,9 @@
           <div class="col-sm-7 py-5 d-flex justify-content-center">
             <div class="card" >         
              <div class="card-body">
-                <img src="https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/8c/e8/77/8ce87757-c5ca-1c85-83a8-485834916063/21UMGIM20177.rgb.jpg/400x400cc.jpg" class="card-img-top rounded" alt="cover">
-                <h5 class="card-title text-center pt-5">Daddy - SDM & Booba</h5>
+                <img src="" class="card-img-top rounded" alt="cover" id="cover">
+                <h5 class="card-title text-center pt-4" style="font-weight: bold; font-size: 2.5rem;" alt="title" id="titlesong"></h5>
+                <h5 class="card-title text-center pt-2" alt="title" id="subtitlesong"></h5>
                 <img src="https://img.icons8.com/pastel-glyph/64/000000/expand-arrow.png" class="rounded mx-auto d-block" alt="arrow">
                   <div class="container text-center mt-1 p-3">
                     <div class="row mt-4" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="spotify">
@@ -29,7 +39,7 @@
                         <img src="https://services.linkfire.com/logo_spotify_onlight.svg" class="img-fluid" alt="spotify">
                       </div>
                       <div class="col">
-                        <button type="button" class="btn btn-dark float-right m-1">Ecouter</button>
+                        <button type="button" id="buttonspotify" class="btn btn-dark float-right m-1" href="">Ecouter</button>
                       </div>
                     </div>
                     <div class="row mt-4" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="deezer">
