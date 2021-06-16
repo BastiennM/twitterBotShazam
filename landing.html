@@ -5,53 +5,103 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap" rel="stylesheet">
+    <title>Shazam bot</title>
   </head>
   <body>
-    <div class="container pt-3">
+    <style>
+      *{
+        font-family:'Cabin',Arial,sans-serif;
+      }
+    </style>
+    <div class="container">
       <div class="row">
-        <div class="card position-absolute top-50 start-50 translate-middle" style="width: 22rem;">
-          <img src="https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/8c/e8/77/8ce87757-c5ca-1c85-83a8-485834916063/21UMGIM20177.rgb.jpg/400x400cc.jpg" class="card-img-top rounded" alt="cover">
-          <div class="card-body">
-            <h5 class="card-title text-center pt-3">Daddy - SDM & Booba</h5>
-            <img src="https://img.icons8.com/pastel-glyph/64/000000/expand-arrow.png" class="rounded mx-auto d-block" alt="arrow">
-              <div class="container text-center mt-1 p-3">
-                <div class="row justify-content-around" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="spotify">
-                  <div class="col">
-                    <img src="https://services.linkfire.com/logo_spotify_onlight.svg" class="img-fluid" alt="...">
+          <div class="col-sm-7 py-5 d-flex justify-content-center">
+            <div class="card" >         
+             <div class="card-body">
+                <img src="https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/8c/e8/77/8ce87757-c5ca-1c85-83a8-485834916063/21UMGIM20177.rgb.jpg/400x400cc.jpg" class="card-img-top rounded" alt="cover">
+                <h5 class="card-title text-center pt-5">Daddy - SDM & Booba</h5>
+                <img src="https://img.icons8.com/pastel-glyph/64/000000/expand-arrow.png" class="rounded mx-auto d-block" alt="arrow">
+                  <div class="container text-center mt-1 p-3">
+                    <div class="row mt-4" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="spotify">
+                      <div class="col">
+                        <img src="https://services.linkfire.com/logo_spotify_onlight.svg" class="img-fluid" alt="spotify">
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-dark float-right m-1">Ecouter</button>
+                      </div>
+                    </div>
+                    <div class="row mt-4" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="deezer">
+                      <div class="col">
+                        <img src="https://services.linkfire.com/logo_deezer_onlight.svg" class="img-fluid" alt="deezer">
+                      </div>
+                      <div class="col clearfix">
+                        <button type="button" class="btn btn-dark float-right  m-1">Ecouter</button>
+                      </div>
+                    </div>
+                    <div class="row mt-4" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="applemusic">
+                      <div class="col">
+                        <img src="https://services.linkfire.com/logo_applemusic_onlight.svg" class="img-fluid" alt="...">
+                      </div>
+                      <div class="col clearfix">
+                        <button type="button" class="btn btn-dark float-right  m-1">Ecouter</button>
+                      </div>
+                    </div>
+                    <div class="row mt-4" alt='youtube'>
+                      <div class="col">
+                        <img src="https://services.linkfire.com/logo_youtube_onlight.svg" class="img-fluid" alt="...">
+                      </div>
+                      <div class="col clearfix">
+                        <button type="button" class="btn btn-dark float-right  m-1">Ecouter</button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col">
-                    <button type="button" class="btn btn-dark float-right">Ecouter</button>
-                  </div>
-                </div>
-                <div class="row mt-4 row justify-content-around" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="deezer">
-                  <div class="col">
-                    <img src="https://services.linkfire.com/logo_deezer_onlight.svg" class="img-fluid" alt="deezer">
-                  </div>
-                  <div class="col clearfix">
-                    <button type="button" class="btn btn-dark float-right">Ecouter</button>
-                  </div>
-                </div>
-                <div class="row mt-4 row justify-content-around" style="padding-bottom:30px; border-bottom: 1px solid #ccc;" alt="applemusic">
-                  <div class="col">
-                    <img src="https://services.linkfire.com/logo_applemusic_onlight.svg" class="img-fluid" alt="...">
-                  </div>
-                  <div class="col clearfix">
-                    <button type="button" class="btn btn-dark float-right">Ecouter</button>
-                  </div>
-                </div>
-                <div class="row mt-4 row justify-content-around" alt='youtube'>
-                  <div class="col">
-                    <img src="https://services.linkfire.com/logo_youtube_onlight.svg" class="img-fluid" alt="...">
-                  </div>
-                  <div class="col clearfix">
-                    <button type="button" class="btn btn-dark float-right">Ecouter</button>
-                  </div>
-                </div>
               </div>
-          </div>
-        </div>
-        </div>
+            </div>
+            </div>
+        <div class="col-sm-5 space">
+          <div class="col-sm px-5 py-5 d-flex justify-content-center">
+            <div class="header">
+              <p style="font-weight: bold; font-size: 3rem;">Parole</p>
+              <p style="line-height: 2rem; color:#949494">
+              Elle m'appelle "Daddy", elle croit que j'vais lui passer l'anneau<br>
+              Mais jamais d'la vie, la 0-9 est sur le bateau<br><br>
+  
+              Elle m'appelle "Daddy", elle croit que j'vais lui passer l'anneau<br>
+              La faire monter dans l'quatre anneaux, nan<br>
+              Mais jamais d'la vie, elle peut dead pour le négro<br>
+              J'tiens son petit cœur dans la mano<br>
+              Elle a l'cul d'un poney, des seins siliconés<br>
+              Mais j'l'ai barrée, gros, tu connais<br>
+              J'tape des khaptas sous Jack Honey<br>
+              Bloquée sur mon portable, pourtant, ellе est potablev
+              Mais j'pensе qu'à faire de la <br>
+              100 moins 8, gros, tu nous connais<br><br>
+  
+              Mais elle m'appelle "Daddy" comme si j'allais la doter<br>
+              Comme si pour elle, j'avais l'temps<br>
+              Et jamais d'la vie, et ce verre corsé que j'peux pas siroter (siroter)<br>
+              T'es un avion d'chasse que j'veux pas piloter<br>
+  
+              Elle m'appelle "Daddy", elle croit que j'vais lui passer l'anneau<br>
+              Mais jamais d'la vie, la 0-9 est sur le bateau<br>
+              22, akha, 18 carats, 100 moins ocho, c'est les travaux<br>
+              22, akha, 18 carats, négocie pas, c'est les tarots<br><br>
+  
+              Sans parachute, t'as sauté, va voir ailleurs<br>
+              Un mec comme moi te nique la santé<br>
+              Rien que j'l'envoie chier mais histoire d'amour, elle veut tenter<br>
+              Elle a vu qu'j'avais l'numéro de Kopp et d'Dany Synthé<br>
+              J'suis son fond d'écran, la petite est fêlée<br>
+              Elle embrasse son écran quand elle me voit à la télé<br>
+              Elle m'suce dans la gova, j'l'ai jamais ramenée au tel-hô<br>
+              Négocie pas, c'est les tarots, chef de chantier, j'gère les travaux<br>
+              </p>
+            </div>
+        </div>        
+      </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   </body>
