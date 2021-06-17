@@ -6,7 +6,7 @@ from datetime import datetime
 now = datetime.now().time()
 print("start =", now)
 
-mp3_file_content_to_recognize = open('daddyshort.mp3', 'rb').read()
+mp3_file_content_to_recognize = open('mp3/testshort.mp3', 'rb').read()
 
 shazam = Shazam(mp3_file_content_to_recognize)
 recognize_generator = shazam.recognizeSong()
@@ -44,13 +44,13 @@ item = dict(
 now = datetime.now().time()
 print('finish dict =',now)
 
-with open("datanew.json", "w") as file_object:
+with open("json/datanew.json", "w") as file_object:
     json.dump(item, file_object)
 now = datetime.now().time()
 print('success =',now)
 
 from subprocess import call
-cmd = 'scp /home/pi/botShazam/twitterBotShazam/datanew.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot'
+cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/datanew.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot'
 call(cmd.split())
 
 now = datetime.now().time()
