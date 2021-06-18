@@ -2,6 +2,11 @@ from ShazamAPI import Shazam
 import json
 import requests
 from datetime import datetime
+import random
+from subprocess import call
+
+#create the url
+url = str(random.randint(0,9999))
 
 now = datetime.now().time()
 print("start =", now)
@@ -11,20 +16,16 @@ mp3_file_content_to_recognize = open('mp3/testshort.mp3', 'rb').read()
 shazam = Shazam(mp3_file_content_to_recognize)
 recognize_generator = shazam.recognizeSong()
 listrecognize = list(recognize_generator)
-now = datetime.now().time()
-print('finish list =', now)
 
 # request to get the youtube link
-url = "https://cdn.shazam.com/video/v3/-/RU/iphone/561541479/youtube/video?q=SDM+%22Daddy%22"
+urlytb = listrecognize[0][1]["track"]["sections"][2]['youtubeurl']
 payload={}
 files={}
 headers = {}
-response = requests.request("GET", url, headers=headers, data=payload, files=files)
+response = requests.request("GET", urlytb, headers=headers, data=payload, files=files)
 jsonedytb = response.json()
 
-now = datetime.now().time()
-print('finish request ytb =',now)
-
+#create dict for element
 item = dict(
     titlepart= (listrecognize[0][1]["track"]["title"]),  #GET part TITLE OF THE SONG
     subtitle=(listrecognize[0][1]["track"]["subtitle"]), #GET part subtitle OF THE SONG
@@ -41,26 +42,54 @@ item = dict(
     youtubelink = (jsonedytb['actions'][0]['uri']) # get youtube link
     )
 
+#create dict for lyrics
 newlyrics = dict(
     lyrics = (listrecognize[0][1]["track"]["sections"][1]["text"]) #get lyrics
     )
 
-now = datetime.now().time()
-print('finish dict =',now)
+#request to get the spotify link
+#delete a part of string with "spotify:search:"
+s = (listrecognize[0][1]["track"]["hub"]["providers"][0]["actions"][0]['uri'])
+string = s.replace("spotify:search:", "")
 
-with open("json/datanew.json", "w") as file_object:
+#delete the quote from string
+newstring = string.replace('"','')
+
+urlspot = "https://api.spotify.com/v1/search?q="+newstring+"&type=track&limit=1"
+payload={}
+files={}
+headers = {
+  'Authorization': 'Bearer BQAi9LhY6oXb_XKJDkc2scPtiAudwPWHSWUVYUCnhkY_DIEkpi506VUZKuURGAe2A09SnG9zvBABGPOC_jhL_QBCtRblS4ile5nCd16v75hdQeehb5y2hK8yp6WcZXpuZAJu2po',
+}
+response = requests.request("GET", urlspot, headers=headers, data=payload, files=files)
+jsonedspotify = response.json()
+print(jsonedspotify)
+#create dict for spotify
+itemspotify = dict(
+    artistpage = jsonedspotify['tracks']["items"][0]['artists'][0]['external_urls']['spotify'], # get the artist page
+    artistid = jsonedspotify['tracks']["items"][0]['artists'][0]['id'], # get the artist id
+    trackpage = jsonedspotify['tracks']["items"][0]['external_urls']['spotify'], # get the track page
+    trackid = jsonedspotify['tracks']["items"][0]['id'], # get the track id
+    albumpage =jsonedspotify['tracks']["items"][0]['album']['external_urls']['spotify'], # get the album page
+    albumid=jsonedspotify['tracks']["items"][0]['album']['id'] # get the album id
+)
+
+# create all json files
+with open("json/spotify"+url+".json", "w") as file_object:
+    json.dump(itemspotify, file_object)
+with open("json/datanew"+url+".json", "w") as file_object:
     json.dump(item, file_object)
-with open("json/lyrics.json", "w") as file_objects:
+with open("json/lyrics"+url+".json", "w") as file_objects:
     json.dump(newlyrics, file_objects)
 
-now = datetime.now().time()
-print('success =',now)
-
-from subprocess import call
-cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/datanew.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot'
+#send by ssh the json files
+cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/datanew'+url+'.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot/json'
 call(cmd.split())
-cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/lyrics.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot'
+cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/lyrics'+url+'.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot/json'
+call(cmd.split())
+cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/spotify'+url+'.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot/json'
 call(cmd.split())
 
 now = datetime.now().time()
 print('send =',now)
+print('your url is bastiendev.fr/?url='+url)
