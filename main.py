@@ -11,7 +11,7 @@ url = str(random.randint(0,9999))
 now = datetime.now().time()
 print("start =", now)
 
-mp3_file_content_to_recognize = open('mp3/testshort.mp3', 'rb').read()
+mp3_file_content_to_recognize = open('mp3/daddyshort.mp3', 'rb').read()
 
 shazam = Shazam(mp3_file_content_to_recognize)
 recognize_generator = shazam.recognizeSong()
@@ -63,7 +63,7 @@ headers = {
 }
 response = requests.request("GET", urlspot, headers=headers, data=payload, files=files)
 jsonedspotify = response.json()
-print(jsonedspotify)
+
 #create dict for spotify
 itemspotify = dict(
     artistpage = jsonedspotify['tracks']["items"][0]['artists'][0]['external_urls']['spotify'], # get the artist page
