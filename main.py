@@ -38,19 +38,28 @@ item = dict(
     albumid=(listrecognize[0][1]["track"]["albumadamid"]), #GET album id 
     disqueeditor = (listrecognize[0][1]["track"]["sections"][0]["metadata"][1]["text"]), #GET album maison de disque name
     year = (listrecognize[0][1]["track"]["sections"][0]["metadata"][2]["text"]), #GET album years
-    lyrics = (listrecognize[0][1]["track"]["sections"][1]["text"]), #get lyrics
     youtubelink = (jsonedytb['actions'][0]['uri']) # get youtube link
     )
+
+newlyrics = dict(
+    lyrics = (listrecognize[0][1]["track"]["sections"][1]["text"]) #get lyrics
+    )
+
 now = datetime.now().time()
 print('finish dict =',now)
 
 with open("json/datanew.json", "w") as file_object:
     json.dump(item, file_object)
+with open("json/lyrics.json", "w") as file_objects:
+    json.dump(newlyrics, file_objects)
+
 now = datetime.now().time()
 print('success =',now)
 
 from subprocess import call
 cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/datanew.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot'
+call(cmd.split())
+cmd = 'scp /home/pi/botShazam/twitterBotShazam/json/lyrics.json u105060309@access875183491.webspace-data.io:/kunden/homepages/16/d875183491/htdocs/shazambot'
 call(cmd.split())
 
 now = datetime.now().time()
