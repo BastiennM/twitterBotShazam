@@ -59,7 +59,7 @@ urlspot = "https://api.spotify.com/v1/search?q="+newstring+"&type=track&limit=1"
 payload={}
 files={}
 headers = {
-  'Authorization': 'Bearer BQAi9LhY6oXb_XKJDkc2scPtiAudwPWHSWUVYUCnhkY_DIEkpi506VUZKuURGAe2A09SnG9zvBABGPOC_jhL_QBCtRblS4ile5nCd16v75hdQeehb5y2hK8yp6WcZXpuZAJu2po',
+  'Authorization': 'Bearer A REMPLIR',
 }
 response = requests.request("GET", urlspot, headers=headers, data=payload, files=files)
 jsonedspotify = response.json()
